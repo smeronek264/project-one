@@ -13,3 +13,7 @@ app.secret_key = 'your_secret_key' # this is an artifact for using flash display
 @app.route('/')
 def home():
     return render_template('home.html')
+
+# these two lines of code should always be the last in the file
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080, debug=True)
