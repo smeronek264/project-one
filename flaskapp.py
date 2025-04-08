@@ -12,7 +12,7 @@ app.secret_key = 'your_secret_key' # this is an artifact for using flash display
 
 @app.route('/')
 def home():
-    return "<p>Hello<\p>"
+    return "<p>Hello</p>"
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
