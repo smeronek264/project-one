@@ -37,6 +37,6 @@ for _, row in unique_df.iterrows():
 # Combine all SQL statements
 
 print(create_table_sql)
-for i in range(101,200):
+for i in range(200):
     print(insert_statements[i])
 
