@@ -29,8 +29,6 @@ CREATE TABLE Pokemon (
 );
 """
 
-
-
 # Create insert statements for unique rows
 insert_statements = []
 for _, row in unique_df.iterrows():
@@ -40,7 +38,7 @@ for _, row in unique_df.iterrows():
 
 # Combine all SQL statements
 
-print(create_table_sql)
-for i in range(200):
+# print(create_table_sql)
+for i in range(701, len(insert_statements)):
     print(insert_statements[i])
 
