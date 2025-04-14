@@ -1,5 +1,5 @@
 # Code was created using CHATGPT
-# The purpose of the code is to create statements from 
+# The purpose of the code is to create statements to create 
 
 
 from pandas import *
