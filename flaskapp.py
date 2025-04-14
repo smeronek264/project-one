@@ -5,6 +5,7 @@
 from flask import Flask
 from flask import render_template
 from flask import Flask, render_template, request, redirect, url_for, flash
+from src.databaseAcceess import *
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' # this is an artifact for using flash displays; 
@@ -13,6 +14,11 @@ app.secret_key = 'your_secret_key' # this is an artifact for using flash display
 @app.route('/')
 def home():
     return "<p>Hello</p>"
+
+@app.route('/showPokemonType')
+def show_pokemon():
+    pokemon_list = showpokemon("Water")
+    render_template('show-pokemon.html', pokemon_list)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
