@@ -1,3 +1,7 @@
+# Code was created using CHATGPT
+# The purpose of the code is to create statements from 
+
+
 from pandas import *
 
 df = read_csv("C://Users//sophi//OneDrive//Documents//pokemon.csv")
