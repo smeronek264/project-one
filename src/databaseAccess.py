@@ -57,7 +57,7 @@ def execute_query(query,args=()):
 
 
 def show_country():
-    query = "SELECT Name FROM country LIMIT 20;"
+    query = "SELECT Name, Continent, Region, Population FROM country LIMIT 20;"
     return execute_query(query)
 
 
