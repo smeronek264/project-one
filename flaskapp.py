@@ -17,8 +17,8 @@ def home():
 
 @app.route('/showPokemonType')
 def show_pokemon():
-    pokemon_list = showpokemon("Water")
-    render_template('show-pokemon.html', pokemon_list)
+    countryList = show_country()
+    return render_template('show-countries.html', countries = countryList)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
