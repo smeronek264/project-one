@@ -14,15 +14,15 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Type</th>
+                    <th>Primary Type</th>
                 </tr>
             </thead>
             <tbody>
                 {% for pokemon in pokemon_list %}
                 <tr>
-                    <td>{{ loop.index }}</td>
+                    <td>{{ pokemon.pokedex_number }}</td>
                     <td>{{ pokemon.name }}</td>
-                    <td>{{ pokemon.type }}</td>
+                    <td>{{ pokemon.type1 }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
