@@ -15,8 +15,13 @@ app.secret_key = 'your_secret_key' # this is an artifact for using flash display
 def home():
     return render_template("home.html")
 
-@app.route('/pokemonTeamCreator')
+@app.route('/pokemonTeamCreator', methods = ["GET", "POST"])
 def pokemon_creator_team():
+
+    if request.method == "POST":
+
+        flash('Team Successfully Added!', 'success')
+
     return render_template("pokemon-team-creator-menu.html")
 
 @app.route('/showAllPokemon')
@@ -36,8 +41,8 @@ def show_pokemon():
 
 @app.route('/pokemonForm')
 def pokemon_form():
-    pokemon_list = all_pokemon()
-    return render_template('pokemon_team_form.html', pokemon_list = pokemon_list)
+    pokemon_list = all_pokemon_stats()
+    return render_template('pokemon-team-form.html', pokemon_list = pokemon_list)
 
 @app.route("/pokemonDamage")
 def pokemon_damage():
