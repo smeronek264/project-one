@@ -47,9 +47,7 @@ def pokemon_form():
 @app.route("/pokemonDamage")
 def pokemon_damage():
     damage_list = show_damage_stats()
-    section_damage_list = damage_list[1:10]
-
-    return render_template("pokemon-damage.html", damages = section_damage_list)
+    return render_template("pokemon-damage.html", pokemon_list = damage_list)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':

@@ -2,54 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pokémon Damage Stats</title>
+    <title>Pokemon Damage Table</title>
     <style>
-        body {
+        table {
+            width: 100%;
+            border-collapse: collapse;
             font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f0f8ff;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
         h1 {
-            color: #333;
-        }
-        .pokemon-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .strong-against {
-            margin-top: 10px;
-        }
-        .type {
-            display: inline-block;
-            background-color: #e0e0e0;
-            color: #333;
-            padding: 5px 10px;
-            margin: 2px;
-            border-radius: 12px;
-            font-size: 0.9em;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
 <body>
-    <h1>Pokémon Damage Stats</h1>
-    
-    {% for pokemon in damages %}
-        <div class="pokemon-card">
-            <h2>#{{ pokemon.pokedex_number }} - {{ pokemon.name }}</h2>
-            <div class="strong-against">
-                <strong>Strong Against:</strong>
-                {% if pokemon.effective_list %}
-                    {% for type in pokemon.effective_list %}
-                        <span class="type">{{ type }}</span>
-                    {% endfor %}
-                {% else %}
-                    <span>None</span>
-                {% endif %}
-            </div>
-        </div>
-    {% endfor %}
+    <h1>Pokemon Type Effectiveness Table</h1>
+    <p>This table will show how different types will do against the Pokemon.</p>
+    <p>Strong: This type is effective (will deal a lot of damage) against the pokemon</p>
+    <p>Standard: This type is will deal the standard amount of damage against the pokemon</p>
+    <p>Weak: This type is not effective (will deal a little damage) against the pokemon</p>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Bug</th>
+                <th>Dark</th>
+                <th>Dragon</th>
+                <th>Electric</th>
+                <th>Fairy</th>
+                <th>Fighting</th>
+                <th>Fire</th>
+                <th>Ghost</th>
+                <th>Grass</th>
+                <th>Ground</th>
+                <th>Ice</th>
+                <th>Normal</th>
+                <th>Poison</th>
+                <th>Psychic</th>
+                <th>Rock</th>
+                <th>Steel</th>
+                <th>Water</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pokemon in pokemon_list %}
+            <tr>
+                <td>{{ pokemon.pokedex_number }}</td>
+                <td>{{ pokemon.name }}</td>
+                <td>{{ pokemon.against_bug }}</td>
+                <td>{{ pokemon.against_dark }}</td>
+                <td>{{ pokemon.against_dragon }}</td>
+                <td>{{ pokemon.against_electric }}</td>
+                <td>{{ pokemon.against_fairy }}</td>
+                <td>{{ pokemon.against_fight }}</td>
+                <td>{{ pokemon.against_fire }}</td>
+                <td>{{ pokemon.against_ghost }}</td>
+                <td>{{ pokemon.against_grass }}</td>
+                <td>{{ pokemon.against_ground }}</td>
+                <td>{{ pokemon.against_ice }}</td>
+                <td>{{ pokemon.against_normal }}</td>
+                <td>{{ pokemon.against_poison }}</td>
+                <td>{{ pokemon.against_psychic }}</td>
+                <td>{{ pokemon.against_rock }}</td>
+                <td>{{ pokemon.against_steel }}</td>
+                <td>{{ pokemon.against_water }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
