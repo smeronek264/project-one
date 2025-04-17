@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémon Damage Stats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        .pokemon-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .strong-against {
+            margin-top: 10px;
+        }
+        .type {
+            display: inline-block;
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 5px 10px;
+            margin: 2px;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pokémon Damage Stats</h1>
+    
+    {% for pokemon in damages %}
+        <div class="pokemon-card">
+            <h2>#{{ pokemon.pokedex_number }} - {{ pokemon.name }}</h2>
+            <div class="strong-against">
+                <strong>Strong Against:</strong>
+                {% if pokemon.effective_list %}
+                    {% for type in pokemon.effective_list %}
+                        <span class="type">{{ type }}</span>
+                    {% endfor %}
+                {% else %}
+                    <span>None</span>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
