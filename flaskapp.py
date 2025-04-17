@@ -13,7 +13,16 @@ app.secret_key = 'your_secret_key' # this is an artifact for using flash display
 
 @app.route('/')
 def home():
-    return "<p>Hello</p>"
+    return render_template("home.html")
+
+@app.route('/pokemonTeamCreator')
+def pokemon_creator_team():
+    return render_template("pokemon-team-creator-menu.html")
+
+@app.route('/showAllPokemon')
+def show_all_pokemon():
+    pokemon_list = all_pokemon_stats()
+    return render_template('show-all-pokemon.html', pokemon_list=pokemon_list)
 
 # @app.route("/showPokemonForm", methods=['GET', 'POST'])
 # def show_pokemon_form():

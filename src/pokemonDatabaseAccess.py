@@ -1,7 +1,6 @@
 import pymysql
 import pymysql.cursors
 import creds
-import boto3
 
 def get_conn():
 
@@ -32,4 +31,8 @@ def showpokemon(poke_type):
 def all_pokemon():
     query = "SELECT pokedex_number, name FROM Pokemon;"
     return query
+
+def all_pokemon_stats():
+    query = "SELECT pokedex_number, name, type1, hp, attack, defense, sp_attack, sp_defense FROM Pokemon;"
+    return execute_query(query)
 
