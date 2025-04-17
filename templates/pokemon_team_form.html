@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokémon Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .pokemon-list {
+      columns: 3;
+      -webkit-columns: 3;
+      -moz-columns: 3;
+    }
+    .pokemon-item {
+      margin: 5px 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Select Pokémon</h1>
+  <div class="pokemon-list">
+    {% for pokemon in pokemon_list %}
+      <label class="pokemon-item">
+        <input type="checkbox" name="pokemon" value="{{ pokemon.pokedex_number }}">
+        #{{ "%03d" | format(pokemon.pokedex_number) }} {{ pokemon.name }}
+      </label>
+    {% endfor %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Type Form</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+        }
+        .pokemon-list {
+          columns: 3;
+          -webkit-columns: 3;
+          -moz-columns: 3;
+        }
+        .pokemon-item {
+          margin: 5px 0;
+          display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Pokémon Type</h1>
+    <!-- Change the form action to redirect to show_pokemon with the selected type -->
+    <form action="{{ url_for('show_pokemon') }}" method="POST">
+        <select name="type" id="type">
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="electric">Electric</option>
+            <!-- Add other Pokémon types as needed -->
+        </select>
+        
+        <input id="submit" type="submit" value="Submit Form">
+    </form>
+</body>
+</html>

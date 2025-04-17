@@ -5,7 +5,7 @@
 from flask import Flask
 from flask import render_template
 from flask import Flask, render_template, request, redirect, url_for, flash
-from src.databaseAccess import *
+from src.pokemonDatabaseAccess import *
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' # this is an artifact for using flash displays; 
@@ -15,10 +15,33 @@ app.secret_key = 'your_secret_key' # this is an artifact for using flash display
 def home():
     return "<p>Hello</p>"
 
-@app.route('/showPokemonType')
-def show_pokemon():
-    pokemon_list = showpokemon("Water")
-    return render_template('show-pokemon.html', pokemon_list = pokemon_list)
+# @app.route("/showPokemonForm", methods=['GET', 'POST'])
+# def show_pokemon_form():
+#     if request.method == "POST":
+#         pokemon_type = request.form["type"]
+#         return redirect(url_for('show_pokemon', pokemon_type=pokemon_type))
+    
+#     else:
+#         return render_template('show-pokemon-type-form.html')
+
+@app.route("/showPokemonForm", methods=['GET', 'POST'])
+def show_pokemon_form():
+    if request.method == "POST":
+        pokemon_type = request.form["type"]
+        print(f"Redirecting to show_pokemon with type: {pokemon_type}")  # Debugging line
+        return redirect(url_for('show_pokemon', pokemon_type=pokemon_type))    
+    return render_template('show-pokemon-type-form.html')
+
+
+@app.route("/showPokemonType", methods=["GET, POST"])
+def show_pokemon(pokemon_type):
+    pokemon_list = showpokemon(pokemon_type)
+    return render_template("show-pokemon.html", pokemon_list=pokemon_list)
+
+@app.route('/pokemonForm')
+def pokemon_form():
+    pokemon_list = all_pokemon()
+    return render_template('pokemon_team_form.html', pokemon_list = pokemon_list)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
