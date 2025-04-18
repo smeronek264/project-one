@@ -67,6 +67,19 @@ def get_pokemon_teams():
 def delete_team_page():
     return render_template('pokemon-team-delete.html')
 
+@app.route("/updateTeam", methods=["GET", "POST"])
+def update_team_page():
+    if request.method == "POST":
+        name = request.form["team_name"]
+        pokemon = request.form["pokemon"]
+
+        update_teams(table, name, pokemon)
+
+        flash('Team has been updated',"warning" )
+
+
+    return render_template('pokemon-team-update.html')
+
 @app.route("/showPokemonType", methods=["GET", "POST"])
 def show_pokemon():
     pokemon_type = request.form["type"]

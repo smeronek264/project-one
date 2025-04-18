@@ -41,12 +41,17 @@ def create_teams(name, pokemon_list):
     except: 
        return "<p>Can not add the team.</p>"
 
-def update_teams(name, pokemon_list):
-    try:
-        table.put(Item = {"team_name":name, "pokemon_numbers":pokemon_list})
-        return None
-    except:
-               return "<p>Can not add the team.</p>"
+def update_teams(table, name, pokemon):
+    teams = print_all_pokemon(table)
+    for team in teams:
+        if team["team_name"] == name:
+            pokemon_list = [12, 56, 36, 95, 78, 456]
+
+            table.update_item(
+                Key={"team_name": name},
+                UpdateExpression="SET pokemon_numbers = :r",
+                ExpressionAttributeValues={':r': pokemon_list}
+            )
 
 def delete_team(team_name):
     """
