@@ -14,21 +14,21 @@
       <br>
       <br>
       <label for="team_name">Enter Team Name</label><br>
-      <input type = "text" name ="team_name" required>
+      <input type = "text" id ="team_name" required>
       <br>
       <br>
       <label for="pokemon1"></label><br>
-      <input type = "text" name ="pokemon1" value = None >
+      <input type = "text" id ="pokemon1" >
       <label for="pokemon2">Enter Pokemon Number 1</label><br>
-      <input type = "text" name ="pokemon2" value = None>
+      <input type = "text" id ="pokemon2" >
       <label for="pokemon3">Enter Pokemon Number 2</label><br>
-      <input type = "text" name ="pokemon3" value = None>
+      <input type = "text" id ="pokemon3" >
       <label for="pokemon4">Enter Pokemon Number 3</label><br>
-      <input type = "text" name ="pokemon4" value = None>
+      <input type = "text" id ="pokemon4" >
       <label for="pokemon5">Enter Pokemon Number 4</label><br>
-      <input type = "text" name ="pokemon5" value = None>
+      <input type = "text" id ="pokemon5" >
       <label for="pokemon6">Enter Pokemon Number 5</label><br>
-      <input type = "text" name ="pokemon6" value = None>
+      <input type = "text" id ="pokemon6" >
       <label for="pokemon6">Enter Pokemon Number 6</label><br>
 
  

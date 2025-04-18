@@ -11,14 +11,18 @@ def get_team(pokemon_team_dict):
     pokemon_team = {}
     pokemon_team["team_name"] = pokemon_team_dict["team_name"]
     pokemon_list = []
-    for pokemon in pokemon_team_dict.get("pokemon_numbers"):
-        current_mon = showspecificpokemon(int(pokemon))
-        current_mon = current_mon[0]
-        pokemon_list.append(current_mon)  # don't reassign here
+    for pokemon in pokemon_team_dict.get("pokemon_numbers", []):
+        try:    
+            current_mon = showspecificpokemon(int(pokemon))
+            if current_mon and len(current_mon) > 0:
+                pokemon_list.append(current_mon[0])
+            else:
+                print(f"Warning: No data found for Pokémon #{pokemon}")
+        except: 
+            print("No Pokemon")
+
 
     pokemon_team["pokemons"] = pokemon_list
-
-    
     return pokemon_team
 
 def print_all_pokemon(table):
@@ -31,21 +35,27 @@ def print_all_pokemon(table):
 
 def create_teams(name, pokemon_list):
     try:
-        table.put(Item = {"team_name":name, "pokemon_numbers":pokemon_list})
-    except: raise("Can not add the team.")
-    return None
+        table.put_item(Item = {"team_name":name, "pokemon_numbers":pokemon_list})
+        return None
+
+    except: 
+       return "<p>Can not add the team.</p>"
 
 def update_teams(name, pokemon_list):
     try:
         table.put(Item = {"team_name":name, "pokemon_numbers":pokemon_list})
-    except: raise("Can not add the team.")
-    return None
+        return None
+    except:
+               return "<p>Can not add the team.</p>"
 
 def delete_teams(name, pokemon_list):
     try:
         table.put(Item = {"team_name":name, "pokemon_numbers":pokemon_list})
-    except: raise("Can not add the team.")
-    return None
+        return None
+    except:
+               return "<p>Can not add the team.</p>"
+
+
 
 
 

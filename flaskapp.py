@@ -27,6 +27,15 @@ def home():
 def pokemon_creator_team():
 
     if request.method == "POST":
+        name = request.form["team_name"]
+        pokemon_list = []
+
+        for pokemon in ["pokemon1", "pokemon1", "pokemon3", "pokemon4", "pokemon5", "pokemon6"]:
+            if request.form[pokemon] != None:
+                curr_pokemon = int(request.form[pokemon] )
+                pokemon_list.append(curr_pokemon)
+
+        create_teams(name, pokemon_list)
 
         flash('Team Successfully Added!', 'success')
 
@@ -54,8 +63,7 @@ def show_pokemon():
 
 @app.route('/pokemonForm')
 def pokemon_form():
-    pokemon_list = allpokemonstats()
-    return render_template('pokemon-team-form.html', pokemon_list = pokemon_list)
+    return render_template('pokemon-team-form.html')
 
 @app.route("/pokemonDamage")
 def pokemon_damage():
