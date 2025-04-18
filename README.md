@@ -39,7 +39,7 @@ The repository contains the following key sections:
 
 - **scr**: Scripts creating SQL queries and for turning data into SQL queries.
 - **data**: The datasets.
-- **templates**: The different HTML templates that are utilized to show the different queries and pages.
+- **templates**: The different HTML templates that are utilized to show the different queries and pages.  Utilized CHATGPT to create the templates.
 - **static\imgs**: This will be used to hold any images I will use so I can insert them later.
 
 ## Requirements
@@ -47,55 +47,53 @@ The repository contains the following key sections:
 To run the code in this repository, you will need the following installed:
 
 - Python
-- Flask
+- Flask and other files
+- boto3
+- pymysql
+- Credentials that I have
 
-
-## Variables
-
-Below is a list of predictor (X) variables used to predict the outcome (Y) variables.
-
-### Predictor Variables (X)
-- **hhsize**: The number of people in a household.
-- **female**: The number of females in a household.
-- **hispanic**: The number of Hispanics in a household.
-- **black**: The number of Black individuals in a household.
-- **kids**: The number of children (under 18) in a household.
-- **elderly**: The number of seniors (over 60) in a household.
-- **education**: The number of people with a college degree in a household.
-- **married**: The number of married individuals in a household.
-
-### Outcome Variables (Y)
-- **FSFOODS**: The household lacks enough food and/or variety.
-- **FSSTATUS**: The household lacks food security.
-
-## Methods
-
-The analysis follows these steps:
-
-1. **Data Cleaning and Preprocessing**: Preparing the data for analysis.
-2. **Model Training**: Training a predictive model using the CPS data.
-3. **Model Application**: Applying the model to ACS data to predict food insecurity in Iowa.
-4. **Aggregation**: Aggregating household-level predictions to the PUMA level.
-
-The model is trained using the CPS data and tested for accuracy. For each outcome variable (Y), two Bernoulli models are trained with a logit link function using Lasso (where unimportant variables have coefficients set to zero) and Ridge (where unimportant variables have coefficients close to zero). Since food insecurity is a binary outcome (insecurity exists or not), the logit link ensures the output remains between 0 and 1. The models are evaluated using testing data, and the one with the highest Area Under the Curve (AUC) on a ROC plot is selected as the best model. Finally, the best model is used to predict food insecurity in the ACS data, and weighted means are calculated for each PUMA to identify regions with the highest probabilities of food insecurity.
+In addition, I utilized VS CODE, AWS, and GITHUB to create the code.
 
 ## Code Execution
 
-To reproduce the results:
+To run the application:
 
-1. Download the CPS and ACS data from the provided links.
-2. Download the files into the `src/` directory.
-3. Install the required packages by running the setup script.
-4. Run the scripts `src/FSFOODS.R` and `src/FSSTATUS_Analysis.R`.
-5. All interpretations are commented within the code.
-6. Compare the results with those in the `outputs/` directory to verify the accuracy of the predictions.
-
-## References
-
-1. U.S. Bureau of Labor Statistics, **Current Population Survey**: [https://www.bls.gov/cps/](https://www.bls.gov/cps/)
-2. IPUMS, **Current Population Survey (CPS)**: [https://cps.ipums.org/cps/](https://cps.ipums.org/cps/)
-3. U.S. Census Bureau, **American Community Survey (ACS)**: [https://www.census.gov/programs-surveys/acs/data.html](https://www.census.gov/programs-surveys/acs/data.html)
+1. Download the pokemon.csv and pokemon_weakness.csv files.
+2. Download the files all the files in the directory.
+3. Install the required packages.
+4. Run the scripts create_pokemon_damage.py and create_pokemon_database.py to create the SQL data
+5. Either upload the data or reach out for access to my SQL databases
+6. Run the Flask apps
 
 ## Disclaimer
 
-This project was completed for STAT 172: Data Mining and General Linear Model at Drake University. We partnered with WesleyLife for this project, and all recommendations were tailored to their plans and needs.
+This project was completed for CS 178: Cloud and Database Management at Drake University. Throughout the project, I relied on CHATGPT to help create templates and to check why I would get error in my code.  I have done a previous project similar to this in CS 188.
+
+# Project #1 Rubric (100 Points Total)
+
+## Part 1: Core Functionality (65 points)
+
+| Criteria                                                                 | Points | Proposed Score |
+|--------------------------------------------------------------------------|--------|----------------|
+| Website uses Flask and runs independently from VS Code (not relying on terminal interaction) | 10     |    10            |
+| Relational database (MySQL/RDS) is correctly used in the project        | 15     |               15 |
+| Non-relational database (DynamoDB) is correctly used (e.g., user info stored/retrieved) | 10     |    8 (I have this working on my local machine, but it is being difficult on AWS)        |
+| Implements full CRUD operations (Create, Read, Update, Delete)          | 10     |          8 (I have this fully implemented, but it is not working due to credentials in AWS.  See Blackboard for evidence.)      |
+| Incorporates at least one SQL JOIN query                                | 5      |          5      |
+| Uses own RDS instance inside student’s VPC                              | 5      |       5         |
+| Uses own IAM account (e.g., ProjectOneUser)                             | 5      |       5    (I created a while new root account with a new IAM user for my EC2 Instance and Dynamo DB.  See Blackboard for Proof)     |
+| Application avoids storing credentials in public GitHub (e.g., creds.py is excluded via .gitignore) | 5      |     5           |
+
+## Part 2: Code Quality and GitHub Submission (25 points)
+
+| Criteria                                                                 | Points | Proposed Score |
+|--------------------------------------------------------------------------|--------|----------------|
+| Code is organized across multiple files (e.g., flaskapp.py, dbCode.py)  | 10     |            10    |
+| Good software practices (clear naming, comments, error handling with try/except, modular functions) | 10     |    10            |
+| GitHub repository is submitted with a clear commit history and a README file | 5   |        5        |
+
+## Part 3: Checkpoint Completion (10 points)
+
+| Criteria                                                                 | Points | Proposed Score |
+|--------------------------------------------------------------------------|--------|----------------|
+| Checkpoint submitted on time with a working Flask app that connects to RDS and renders dynamic data | 10     |    10            |
