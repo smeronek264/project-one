@@ -7,7 +7,7 @@
 </head>
 <body class="bg-light">
   <div class="container py-5">
-    <h2 class="mb-4">Choose Your Pokémon (Max 6)</h2>
+    <h2 class="mb-4">Create Pokemon Team (Max 6)</h2>
 
     <form action="{{ url_for('pokemon_creator_team') }}" method="post">
       <button type="submit" class="btn btn-primary mt-3">Submit Team</button>
@@ -18,17 +18,17 @@
       <br>
       <br>
       <label for="pokemon1"></label><br>
-      <input type = "text" name ="pokemon1" value = None >
+      <input type = "text" name ="pokemon1" value = None required >
       <label for="pokemon2">Enter Pokemon Number 1</label><br>
-      <input type = "text" name ="pokemon2" value = None>
+      <input type = "text" name ="pokemon2" value = None required>
       <label for="pokemon3">Enter Pokemon Number 2</label><br>
-      <input type = "text" name ="pokemon3" value = None>
+      <input type = "text" name ="pokemon3" value = None required>
       <label for="pokemon4">Enter Pokemon Number 3</label><br>
-      <input type = "text" name ="pokemon4" value = None>
+      <input type = "text" name ="pokemon4" value = None required>
       <label for="pokemon5">Enter Pokemon Number 4</label><br>
-      <input type = "text" name ="pokemon5" value = None>
+      <input type = "text" name ="pokemon5" value = None required>
       <label for="pokemon6">Enter Pokemon Number 5</label><br>
-      <input type = "text" name ="pokemon6" value = None>
+      <input type = "text" name ="pokemon6" value = None required>
       <label for="pokemon6">Enter Pokemon Number 6</label><br>
 
  
