@@ -1,6 +1,6 @@
-# Code was created using CHATGPT
-# The purpose of the code is to create statements to create 
-
+# This code was to create SQL queries to enter in the pokemon data 
+# It will show different data of the pokemon such as type, attack, defense, etc.
+# THIS WAS WRITTEN USING CHATGPT
 
 from pandas import *
 

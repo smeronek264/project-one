@@ -1,3 +1,8 @@
+# author: Sop
+
+# This file is meant to access the dynamo DB database and will return different data
+
+
 from src.pokemonDatabaseAccess import *
 import boto3
 
@@ -6,6 +11,7 @@ TABLE_NAME = "PokemonTeams_PO"
 dynamodb = boto3.resource('dynamodb', region_name="us-east-2")
 table = dynamodb.Table(TABLE_NAME)
 
+# This will read in a team that shows up in the Dynamo DB
 def get_team(pokemon_team_dict):
     # print out the values of the movie dictionary
     pokemon_team = {}

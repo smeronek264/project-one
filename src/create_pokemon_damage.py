@@ -1,7 +1,11 @@
+# This code was to create SQL queries to enter in the pokemon damage data 
+# It will show how different types will do against the pokemon
+# THIS WAS WRITTEN USING CHATGPT
+
 from pandas import *
 
 # Load CSV
-df = read_csv("C://Users//sophi//OneDrive//Documents//pokemon_weakness.csv")
+df = read_csv("data/pokemon_weakness.csv")
 
 # Drop duplicates by pokedex_number
 unique_df = df.drop_duplicates(subset='pokedex_number')
