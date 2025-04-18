@@ -51,9 +51,21 @@ def show_pokemon_form():
     return render_template('show-pokemon-type-form.html')
 
 @app.route("/showTeams", methods=['GET', 'POST'])
-def get_pokemon_teams():   
+def get_pokemon_teams(): 
+
+    if request.method == "POST":
+        name = request.form["team_name"]
+        
+        delete_team(name)
+
+        flash('Team has been deleted!', 'warning')
+
     team_list = print_all_pokemon(table)
     return render_template('show-teams.html', teams=team_list)
+
+@app.route("/deleteTeam")
+def delete_team_page():
+    return render_template('pokemon-team-delete.html')
 
 @app.route("/showPokemonType", methods=["GET", "POST"])
 def show_pokemon():

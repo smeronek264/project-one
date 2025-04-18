@@ -9,11 +9,11 @@
   <div class="container py-5">
     <h2 class="mb-4">Choose Your Pokémon (Max 6)</h2>
 
-    <form action="{{ url_for('pokemon_creator_team') }}" method="post">
+    <form action="{{ url_for('get_pokemon_teams') }}" method="post">
       <br>
       <br>
       <label for="team_name">Enter Team Name</label><br>
-      <input type = "text" id ="team_name" required>
+      <input type = "text" name ="team_name" required>
       <br>
       <br>
       <button type="submit" class="btn btn-primary mt-3">Submit Team</button>

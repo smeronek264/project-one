@@ -48,12 +48,20 @@ def update_teams(name, pokemon_list):
     except:
                return "<p>Can not add the team.</p>"
 
-def delete_teams(name, pokemon_list):
+def delete_team(team_name):
+    """
+    prompt user fora Movie Title
+    delete item from the database
+    """
     try:
-        table.put(Item = {"team_name":name, "pokemon_numbers":pokemon_list})
-        return None
+        table.delete_item(
+            Key = {
+                'team_name':team_name
+            }
+        )
+        
     except:
-               return "<p>Can not add the team.</p>"
+        print("error in deleting movie")
 
 
 
