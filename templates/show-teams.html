@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Pokémon Teams</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .team {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .team-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2b2b2b;
+        }
+        .pokemon-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .pokemon-list li {
+            background: #f4f4f4;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>All Pokémon Teams</h1>
+
+    {% for team in teams %}
+        <div class="team">
+            <div class="team-name">{{ team["team_name"] }}</div>
+            <ul class="pokemon-list">
+                {% for pokemon in team["pokemons"] %}
+                    <li>
+                        {{ pokemon["name"] }} - Type: {{ pokemon["type1"] }}
+                        {# Add more attributes if available #}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+
+</body>
+</html>

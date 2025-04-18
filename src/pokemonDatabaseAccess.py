@@ -2,6 +2,7 @@ import pymysql
 import pymysql.cursors
 import creds
 
+# This function will connect to the sql server
 def get_conn():
 
     return pymysql.connect(
@@ -12,6 +13,7 @@ def get_conn():
         cursorclass=pymysql.cursors.DictCursor
     )
 
+# This function will run the queries I write
 def execute_query(query,args=()):
 
     conn = get_conn()
@@ -24,22 +26,28 @@ def execute_query(query,args=()):
         conn.close()
 
 
+# This 
 def showpokemon(poke_type):
-    query = "SELECT pokedex_number, name, type1 FROM Pokemon WHERE type1 = %s LIMIT 50;"
+    query = "SELECT pokedex_number, name, type1 FROM Pokemon WHERE type1 = %s;"
     return execute_query(query, (poke_type,))
 
-def all_pokemon():
+def allpokemon():
     query = "SELECT pokedex_number, name FROM Pokemon;"
     return query
 
-def all_pokemon_stats():
+def allpokemonstats():
     query = "SELECT pokedex_number, name, type1, hp, attack, defense, sp_attack, sp_defense FROM Pokemon;"
     return execute_query(query)
 
-def show_damage_stats():
+def showdamagestats():
     query = "SELECT Pokemon.pokedex_number, name, against_bug, against_dark, against_dragon, against_electric, against_fairy, against_fight, against_fire, against_ghost, against_grass, against_ground, against_ice, against_normal, against_poison, against_psychic, against_rock, against_steel, against_water FROM Pokemon JOIN Pokemon_Damage WHERE Pokemon.pokedex_number = Pokemon_Damage.pokedex_number;"
     
     return execute_query(query)
+
+def showspecificpokemon(pokedex_number):
+    query = "SELECT pokedex_number, name, type1 FROM Pokemon WHERE pokedex_number = %s;"
+    return execute_query(query, (int(pokedex_number),))
+
 
         
     
